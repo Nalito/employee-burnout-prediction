@@ -33,12 +33,14 @@ def predict(data):
     data = preprocess_data(data)
     pred = model.predict(data)
     proba = np.max(model.predict_proba(data))
+    burnt = ['Based on your responses, it appears that you are experiencing some signs of burnout. It is important to prioritize self-care and consider taking breaks to recharge. Remember, taking time for yourself can ultimately improve your productivity and well-being. You have come this far—keep going, but make sure to take care of yourself along the way!', "I know work has been intense, and it\'s completely okay to feel stretched. Remember, your well-being is as important as any project deadline. Taking breaks and setting boundaries helps you recharge, and we\'re here to support you in finding balance. Let\'s talk about how we can make things easier for you.", "Your hard work doesn\'t go unnoticed, and we\'re grateful to have someone as dedicated as you. Sometimes, the best thing you can do is step back and give yourself a break. We\’ll help prioritize what\’s essential and find ways to ease some of the load.", "Thank you for everything you\’re doing—it\’s clear that you\’re giving 100%. If you\'re feeling drained, know that taking time to recover is not just okay; it\'s essential. Let\’s look at where we can adjust things so you have the space you need to come back feeling strong."]
+    not_burnt = ['Great news! It seems like you are managing your workload and stress levels effectively. Keep up the good balance, and continue to stay mindful of your limits to prevent burnout. Maintaining this healthy approach will serve you well in the long run!', "Your energy and commitment really shine through! To keep feeling this way, remember to pace yourself and celebrate each small win. Balance now will help keep burnout at bay, and we\’re here to help you maintain that positive momentum.", "It\'s fantastic to see how engaged and driven you are in your work. If you ever start to feel like things are getting intense, don\’t hesitate to take a breather or reach out. Staying ahead of burnout is key, and we\’re always here to support your well-being.", "We truly appreciate your enthusiasm and the balance you bring to your work. To keep that going, it\'s great to take regular breaks and avoid overloading yourself. Just remember, we\’re here if you ever feel you need a hand managing the workload."]
 
     if pred[0] == 0:
-        recommendation = 'Great news! It seems like you are managing your workload and stress levels effectively. Keep up the good balance, and continue to stay mindful of your limits to prevent burnout. Maintaining this healthy approach will serve you well in the long run!'
+        recommendation = np.random.choice(not_burnt)
         pred = 'not burnt out'
     else:
-        recommendation = 'Based on your responses, it appears that you are experiencing some signs of burnout. It is important to prioritize self-care and consider taking breaks to recharge. Remember, taking time for yourself can ultimately improve your productivity and well-being. You have come this far—keep going, but make sure to take care of yourself along the way!'
+        recommendation = np.random.choice(burnt)
         pred = 'burnt out'
     return [pred, proba, recommendation]
 
