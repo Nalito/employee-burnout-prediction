@@ -124,7 +124,7 @@ def main():
     # Submit Button
     if st.button("Predict Burnout"):
         prediction = predict(data)
-        st.write('You are ', prediction[0], '. The model is ', prediction[1]*100, '% confident of this prediction.')
+        st.write('You are ', prediction[0], '. The model is ', np.round(prediction[1]*100, 2), '% confident of this prediction.')
         st.write(prediction[2])
 
 # Run the app
