@@ -3,7 +3,7 @@ import pickle
 import pandas as pd
 import numpy as np
 
-model = pickle.load(open('svc.pkl', 'rb'))
+model = pickle.load(open('xgb.pkl', 'rb'))
 scaler = pickle.load(open('scaler.pkl', 'rb'))
 age_enc  = pickle.load(open('age_enc.pkl', 'rb'))
 cover_up_enc = pickle.load(open('cover_up_enc.pkl', 'rb'))
